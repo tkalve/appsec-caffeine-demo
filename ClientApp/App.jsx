@@ -36,10 +36,10 @@ function App() {
           onChange={(e) => setQuery(e.target.value)}
         />
         {query.length > 0 && results.length > 0 && (
-            <p>Your search returned <strong>{results.length}</strong> things.</p>
+            <p>Your search for <div dangerouslySetInnerHTML={{__html: query}} /> returned <strong>{results.length}</strong> things.</p>
         )}
         {query.length > 0 && results.length == 0 && (
-            <p>Your search did not return any things.</p>
+            <p>Your search for <div dangerouslySetInnerHTML={{__html: query}} /> did not return any things.</p>
         )}
         {query.length == 0 && (
             <p>Type something to find something.</p>

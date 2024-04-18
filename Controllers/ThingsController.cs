@@ -33,6 +33,9 @@ public class ThingsController : ControllerBase
     [HttpGet("search")]
     public IEnumerable<Thing> Search(string query)
     {
-        return [new Thing { Name = "Search not" }, new Thing { Name = "Implemented yet" }];
+        var sqlQuery = "SELECT Id, Name, Description FROM Things WHERE Name LIKE '%" + query + "%' OR Description LIKE '%" + query + "%'";
+
+        var things = _context.Things.FromSqlRaw(sqlQuery);
+        return things;
     }
 }
